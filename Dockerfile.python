@@ -1,6 +1,5 @@
 FROM python:3.12-slim
 
-<<<<<<< Updated upstream
 WORKDIR /app
 
 COPY requirements.txt .
@@ -9,17 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
-=======
-RUN apt update && \
-    apt-get -i install python3
+EXPOSE 5000:5000
 
-RUN python3 -m venv venv && \
-    source venv/bin/activate
-    
-RUN pip install -r requirements.txt
-#  Ваш код здесь #
->>>>>>> Stashed changes
-
-# Запускаем приложение с помощью uvicorn, делая его доступным по сети
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"] 
