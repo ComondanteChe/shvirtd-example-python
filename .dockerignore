@@ -9,3 +9,5 @@ haproxy
 .dockerignore
 Dockerfile
 Dockerfile.python
+README.md
+__pycache__
