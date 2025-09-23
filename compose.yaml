@@ -1,0 +1,13 @@
+services:
+
+  include:
+    - proxy.yaml
+
+  web:
+    image: shvirtd-example-python
+    restart: always
+    networks:
+        backend: {}
+        ipv4_address: 172.20.0.5
+    ports:
+      5000:5000
