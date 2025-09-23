@@ -7,3 +7,6 @@ proxy.yaml
 .env
 nginx
 haproxy
+.dockerignore
+Dockerfile
+Dockerfile.python
