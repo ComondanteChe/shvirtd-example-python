@@ -1,0 +1,9 @@
+README.txt
+schema.pdf
+requirements.txt
+LICENSE
+Dockerfile
+proxy.yaml
+.env
+nginx
+haproxy
