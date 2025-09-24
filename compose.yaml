@@ -1,13 +1,40 @@
-services:
-
-  include:
+version: '3.8'
+include:
     - proxy.yaml
+
+services:
 
   web:
     image: shvirtd-example-python
     restart: always
+    env_file:
+      - .env
     networks:
-        backend: {}
+      backend:
         ipv4_address: 172.20.0.5
     ports:
-      5000:5000
+      - "5000:5000"
+    environment:
+      - DB_HOST=172.20.0.10
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_NAME=example
+    depends_on:
+      - db
+      - reverse-proxy
+          
+  db:
+    image: mysql:8.0
+    restart: always
+    env_file:
+      - .env
+    networks:
+      backend: {}
+      ipv4_address: 172.20.0.10
+    environment:
+      - MYSQL_DATABASE=example
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - /home/administrator/bd:/var/lib/mysql
