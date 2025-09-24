@@ -39,3 +39,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - /home/administrator/bd:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "root", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
