@@ -29,8 +29,8 @@ services:
     env_file:
       - .env
     networks:
-      backend: {}
-      ipv4_address: 172.20.0.10
+      backend:
+        ipv4_address: 172.20.0.10
     environment:
       - MYSQL_DATABASE=example
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
