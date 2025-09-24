@@ -6,7 +6,7 @@ services:
 
   web:
     image: shvirtd-example-python
-    restart: always
+    restart: on-failure
     env_file:
       - .env
     networks:
