@@ -20,8 +20,9 @@ services:
       - DB_PASSWORD=${MYSQL_PASSWORD}
       - DB_NAME=example
     depends_on:
-      - db
-      - reverse-proxy
+        db:
+          condition: service_healthy
+      
           
   db:
     image: mysql:8.0
